@@ -13,8 +13,8 @@ const NAV = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b-[3px] border-[var(--ink)] bg-[var(--night-2)]">
-      <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-        <a href="#topo" aria-label="Prancheta Temporadas — início" className="shrink-0">
+      <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 max-[359px]:gap-2 max-[359px]:px-3 sm:px-6">
+        <a href="#topo" aria-label="Prancheta Temporadas — início" className="min-w-0 shrink">
           <Logo />
         </a>
         <nav aria-label="Principal" className="hidden lg:block">
@@ -32,7 +32,7 @@ export function SiteHeader() {
           <a href={ONLINE_URL("header")} className="btn btn-sm hidden !bg-[var(--hot)] !text-white sm:inline-flex">
             <Icon name="bolt" className="h-4 w-4" /> Jogar online
           </a>
-          <a href="/carreira" className="btn btn-green btn-sm">
+          <a href="/carreira" className="btn btn-green btn-sm max-[359px]:hidden">
             Começar
           </a>
           <details className="group relative lg:hidden">
@@ -47,6 +47,9 @@ export function SiteHeader() {
                   {item.label}
                 </a>
               ))}
+              <a href="/carreira" className="btn btn-green btn-sm mt-2 w-full min-[360px]:hidden">
+                Começar carreira
+              </a>
               <a href={ONLINE_URL("menu")} className="btn btn-sm mt-2 w-full !bg-[var(--hot)] !text-white">
                 Jogar o Prancheta Online
               </a>
