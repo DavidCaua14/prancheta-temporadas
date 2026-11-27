@@ -60,7 +60,7 @@ export function FinalCta() {
         <Logo size="lg" className="text-left" />
         <h2 className="t-display mt-8 text-3xl text-[var(--ink)] [text-shadow:0.05em_0.05em_0_var(--sun)] sm:text-5xl">O vestiário te espera</h2>
         <p className="mt-4 max-w-lg text-lg leading-relaxed opacity-80">Escolha o seu clube, assine o contrato e comece a primeira temporada. É grátis.</p>
-        <a href="/carreira" className="btn btn-green btn-lg mt-8 w-full sm:w-auto">
+        <a href="/entrar" className="btn btn-green btn-lg mt-8 w-full sm:w-auto">
           Começar minha carreira
         </a>
       </div>

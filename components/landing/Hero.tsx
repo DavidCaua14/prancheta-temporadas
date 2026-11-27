@@ -68,7 +68,7 @@ export function Hero() {
             ganhe reputação e receba propostas de Flamengo, Real Madrid, Manchester City e companhia.
           </p>
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center lg:justify-start">
-            <a href="/carreira" className="btn btn-green btn-lg">
+            <a href="/entrar" className="btn btn-green btn-lg">
               <Icon name="play" className="h-5 w-5" /> Começar minha carreira
             </a>
             <a href="#clubes" className="btn btn-ghost btn-lg">

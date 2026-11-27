@@ -15,6 +15,7 @@ npm run dev
 ## Estrutura
 
 - `app/page.tsx` — tela inicial (mesma estrutura da do online: cabeçalho, destaque, faixa de números, seções, dúvidas, chamada final, rodapé)
+- `app/entrar/` — login e cadastro (por enquanto só o visual: o botão do Google mostra um aviso de "em breve")
 - `app/carreira/` — início da carreira (próxima etapa)
 - `components/landing/` — seções da tela inicial; `LeagueExplorer` é a vitrine de clubes por liga
 - `components/Crest.tsx` — escudo oficial (com plaquinha clara) e `CrestArt`, que encaixa escudos reais nos escudos em branco das artes
@@ -33,4 +34,4 @@ Os nomes e escudos pertencem aos respectivos clubes.
 
 ## Variáveis
 
-- `NEXT_PUBLIC_ONLINE_URL` — endereço do Prancheta Online (botões "Jogar online"). Padrão: `https://prancheta.vercel.app`.
+- `NEXT_PUBLIC_ONLINE_URL` — endereço do Prancheta Online (botões "Jogar online"). Padrão: `https://prancheta-two.vercel.app`.

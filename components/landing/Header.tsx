@@ -32,7 +32,7 @@ export function SiteHeader() {
           <a href={ONLINE_URL("header")} className="btn btn-sm hidden !bg-[var(--hot)] !text-white sm:inline-flex">
             <Icon name="bolt" className="h-4 w-4" /> Jogar online
           </a>
-          <a href="/carreira" className="btn btn-green btn-sm max-[359px]:hidden">
+          <a href="/entrar" className="btn btn-green btn-sm max-[359px]:hidden">
             Começar
           </a>
           <details className="group relative lg:hidden">
@@ -47,7 +47,7 @@ export function SiteHeader() {
                   {item.label}
                 </a>
               ))}
-              <a href="/carreira" className="btn btn-green btn-sm mt-2 w-full min-[360px]:hidden">
+              <a href="/entrar" className="btn btn-green btn-sm mt-2 w-full min-[360px]:hidden">
                 Começar carreira
               </a>
               <a href={ONLINE_URL("menu")} className="btn btn-sm mt-2 w-full !bg-[var(--hot)] !text-white">

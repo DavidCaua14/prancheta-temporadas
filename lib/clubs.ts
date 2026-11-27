@@ -235,4 +235,4 @@ export const CREST_SLOTS: Record<string, { x: number; y: number; w: number }[]> 
 };
 
 /** Endereço do Prancheta Online (defina NEXT_PUBLIC_ONLINE_URL no deploy). */
-export const ONLINE_URL = (slot: string) => `${process.env.NEXT_PUBLIC_ONLINE_URL ?? "https://prancheta.vercel.app"}/?ref=tp&slot=${slot}`;
+export const ONLINE_URL = (slot: string) => `${process.env.NEXT_PUBLIC_ONLINE_URL ?? "https://prancheta-two.vercel.app"}/?ref=tp&slot=${slot}`;
