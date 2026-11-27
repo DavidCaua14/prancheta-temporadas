@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Baloo_2, Bungee } from "next/font/google";
+import { UpdateWatcher } from "@/components/system/UpdateWatcher";
 import "./globals.css";
 
 const display = Bungee({ variable: "--font-display-face", weight: "400", subsets: ["latin", "latin-ext"] });
@@ -17,7 +18,10 @@ export const viewport: Viewport = { themeColor: "#1d1650", width: "device-width"
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={`${display.variable} ${body.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col overflow-x-hidden">{children}</body>
+      <body className="flex min-h-full flex-col overflow-x-hidden">
+        {children}
+        <UpdateWatcher />
+      </body>
     </html>
   );
 }

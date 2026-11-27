@@ -22,6 +22,13 @@ npm run dev
 - `lib/clubs.ts` — ligas, clubes exibidos, posições dos escudos nas artes e o link do online
 - `public/art/` — artes de divulgação e identidade; `public/crests/` — escudos otimizados (WebP 128 e 64 px)
 
+## Atualização obrigatória (igual ao online)
+
+Cada deploy gera uma versão nova (`next.config.ts` → `NEXT_PUBLIC_APP_VERSION`). O jogo consulta `/api/version`
+a cada minuto e quando a aba volta a ficar visível; se mudou, `components/system/UpdateWatcher.tsx` mostra o aviso
+"Apito! Tem atualização" e o botão "Atualizar agora" recarrega. **A cada deploy, atualize as novidades em
+`lib/version.ts`** (as 4 primeiras aparecem no aviso).
+
 ## Escudos
 
 Originais em `data-src/crests/` (SVG/WebP). Para gerar os arquivos do site:
