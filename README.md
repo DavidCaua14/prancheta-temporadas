@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prancheta Temporadas
 
-## Getting Started
+Modo carreira de técnico do Prancheta, com clubes reais e escudos oficiais. Mesma identidade visual do
+Prancheta Online (cartoon anos 90: Bungee + Baloo 2, contorno grosso, sombra sólida).
 
-First, run the development server:
+Especificação completa: `docs/PRANCHETA_TEMPORADAS.md` no repositório do Prancheta Online.
+
+## Rodar
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estrutura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `app/page.tsx` — tela inicial (mesma estrutura da do online: cabeçalho, destaque, faixa de números, seções, dúvidas, chamada final, rodapé)
+- `app/carreira/` — início da carreira (próxima etapa)
+- `components/landing/` — seções da tela inicial; `LeagueExplorer` é a vitrine de clubes por liga
+- `components/Crest.tsx` — escudo oficial (com plaquinha clara) e `CrestArt`, que encaixa escudos reais nos escudos em branco das artes
+- `lib/clubs.ts` — ligas, clubes exibidos, posições dos escudos nas artes e o link do online
+- `public/art/` — artes de divulgação e identidade; `public/crests/` — escudos otimizados (WebP 128 e 64 px)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Escudos
 
-## Learn More
+Originais em `data-src/crests/` (SVG/WebP). Para gerar os arquivos do site:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+node scripts/build-crests.mjs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Os nomes e escudos pertencem aos respectivos clubes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Variáveis
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `NEXT_PUBLIC_ONLINE_URL` — endereço do Prancheta Online (botões "Jogar online"). Padrão: `https://prancheta.vercel.app`.
