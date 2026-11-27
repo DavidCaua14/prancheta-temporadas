@@ -2,13 +2,15 @@
 /* eslint-disable @next/next/no-img-element -- artes e escudos já otimizados em WebP */
 
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { MascotTipInline, MascotTipSide } from "@/components/game/MascotTip";
 import { Icon } from "@/components/ui/Icon";
 import { ONLINE_URL, crestSrc } from "@/lib/clubs";
 import { GoogleLogo } from "./GoogleLogo";
 
 type Mode = "entrar" | "criar";
+
+const LOGIN_CLUBS = ["itabaiana", "paysandu", "santa-cruz", "figueirense", "portuguesa", "guarani", "joinville", "gama", "treze", "volta-redonda"];
 
 /**
  * Login do Temporadas — por enquanto só o visual (o botão ainda não conecta).
@@ -19,6 +21,13 @@ type Mode = "entrar" | "criar";
 export function LoginScreen({ mascot }: { mascot: ReactNode }) {
   const [mode, setMode] = useState<Mode>("criar");
   const [tried, setTried] = useState(false);
+  // o escudo da parede muda a cada visita (sempre um clube de acesso: é onde a carreira começa)
+  const [club, setClub] = useState("itabaiana");
+  useEffect(() => {
+    const list = LOGIN_CLUBS;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- sorteio só no navegador (o HTML pré-gerado usa o primeiro)
+    setClub(list[Math.floor(Math.random() * list.length)]);
+  }, []);
 
   const tip = tried
     ? "Calma, professor! O login ainda está sendo ligado. Enquanto isso, dá para conhecer o Prancheta Online com a mesma conta."
@@ -32,16 +41,15 @@ export function LoginScreen({ mascot }: { mascot: ReactNode }) {
         <MascotTipInline mascot={mascot}>{tip}</MascotTipInline>
 
         <section className="overflow-hidden rounded-[24px] border-[3px] border-[var(--ink)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_6px_0_var(--ink)]">
-          {/* faixa ilustrada + escudos de quem pode estar no seu caminho */}
-          <div className="relative h-32 border-b-[3px] border-[var(--ink)] sm:h-44">
-            <img src="/art/banner-login.webp" alt="" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute bottom-2 right-2 flex -space-x-2">
-              {["itabaiana", "flamengo", "real-madrid"].map((s) => (
-                <span key={s} className="flex h-11 w-11 items-center justify-center rounded-full border-[3px] border-[var(--ink)] bg-[var(--paper)] shadow-[0_3px_0_var(--ink)] sm:h-14 sm:w-14">
-                  <img src={crestSrc(s, 64)} alt="" className="h-[72%] w-[72%] object-contain" />
-                </span>
-              ))}
-            </div>
+          {/* faixa ilustrada: sala do técnico, com um escudo real no lugar do escudo em branco da parede */}
+          <div className="relative aspect-[3/1] border-b-[3px] border-[var(--ink)]">
+            <img src="/art/banner-login-temporadas.webp" alt="" className="absolute inset-0 h-full w-full" />
+            <img
+              src={crestSrc(club, 128)}
+              alt=""
+              className="absolute aspect-square -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-[0_2px_0_rgba(27,16,56,0.5)] transition-opacity duration-300"
+              style={{ left: "86.8%", top: "36.4%", width: "13.2%" }}
+            />
           </div>
 
           <div className="px-5 pb-6 pt-5 sm:px-8 sm:pb-8">
@@ -80,8 +88,8 @@ export function LoginScreen({ mascot }: { mascot: ReactNode }) {
             </p>
 
             <button type="button" onClick={() => setTried(true)} className="btn btn-paper btn-lg mt-6 w-full !bg-white">
-              <GoogleLogo className="h-6 w-6" />
-              {mode === "criar" ? "Criar conta com Google" : "Entrar com Google"}
+              <GoogleLogo className="h-6 w-6 shrink-0" />
+              <span className="min-w-0">{mode === "criar" ? "Criar conta com Google" : "Entrar com Google"}</span>
             </button>
 
             {tried && (
